@@ -1,65 +1,65 @@
-# Automat pentru Cumpărarea Biletelor de Tren (FPGA / VHDL)
+# Train Ticket Vending Machine (FPGA / VHDL)
 
-## Descriere Generală
+## General Description
 
-Acest proiect reprezintă implementarea unui automat digital pentru vânzarea biletelor de tren, realizat pe o placă de dezvoltare FPGA **Basys 3**. Sistemul permite utilizatorului să introducă distanța, calculează prețul, primește plata și eliberează biletul și restul, semnalizând totodată diverse situații de eroare.
+[cite_start]This project implements a digital vending machine for selling train tickets, developed on a **Basys 3** FPGA development board[cite: 140]. [cite_start]The system allows the user to input the distance, calculates the price, processes the payment, and dispenses the ticket and any necessary change, while also signaling various error conditions[cite: 57, 59].
 
-[cite_start]Proiectul a fost dezvoltat în cadrul disciplinei **Proiectarea Sistemelor Numerice** (PSN)[cite: 216, 220].
+[cite_start]The project was developed as part of the **Digital Systems Design** (Proiectarea Sistemelor Numerice - PSN) course[cite: 26].
 
-## Detalii Implementare
+## Implementation Details
 
-| Detaliu | Valoare | Sursă |
+| Detail | Value | Source |
 | :--- | :--- | :--- |
-| **Autor** | [cite_start]Avram Oana-Teodora | [cite: 217, 221] |
-| **Placă de Dezvoltare** | [cite_start]Digilent Basys 3 (Xilinx Artix-7, **xc7a35tcpg236-1**) | [cite: 330, 345] |
-| **Limbaj** | [cite_start]VHDL | [cite: 331] |
-| **Software** | [cite_start]Xilinx Vivado (v2024.2) | [cite: 336, 340] |
-| **Profesor Coordonator** | [cite_start]Ella Seres | [cite: 219, 223] |
+| **Student** | [cite_start]Avram Oana-Teodora [cite: 27] | |
+| **Development Board** | [cite_start]Digilent Basys 3 (Xilinx Artix-7, **xc7a35tcpg236-1**) [cite: 142, 155] | |
+| **Hardware Description Language**| [cite_start]VHDL [cite: 141] | |
+| **Software** | [cite_start]Xilinx Vivado (v2024.2) [cite: 146] | |
+| **Coordinating Professor** | [cite_start]Ella Seres [cite: 29] | |
 
-## Funcționalități Cheie
+## Key Functionalities
 
-[cite_start]Sistemul este un automat de stat finit (FSM) împărțit în Unitatea de Control (UC) și Unitatea de Execuție (UE)[cite: 231, 290], care gestionează următorii pași:
+[cite_start]The system is designed as a Finite State Machine (FSM) clearly partitioned into a **Control Unit (UC)** and an **Execution Unit (UE)**[cite: 169], which manages the following steps:
 
-1.  [cite_start]**Introducerea Distanței:** Utilizatorul introduce distanța dorită (în zeci de km) folosind un set de comutatoare (switches)[cite: 245, 253].
-2.  [cite_start]**Generarea Prețului:** Prețul biletului este calculat automat pe baza unei rate prestabilite de **5 Euro per kilometru**[cite: 254, 326].
-3.  [cite_start]**Plata și Afișarea:** Prețul, suma introdusă și restul sunt afișate pe display-ul cu 7 segmente controlat prin multiplexare[cite: 246, 255, 260, 264, 314].
-4.  [cite_start]**Managementul Plății:** Automatul acceptă sume sub formă de bancnote și monede (între 1€ și 50€)[cite: 247, 248].
-5.  [cite_start]**Eliberarea Biletului:** După confirmarea restului, biletul este eliberat, semnalizat printr-un LED (**`bilet_eliberat`**)[cite: 266].
-6.  [cite_start]**Renunțare:** Se poate renunța la operație în orice moment, cu restituirea sumei introduse[cite: 250].
+1.  [cite_start]**Distance Input:** The user inputs the desired distance (in tens of kilometers) using a set of switches[cite: 63, 69].
+2.  [cite_start]**Price Generation:** The ticket price is automatically calculated based on a fixed rate of **5 Euro per kilometer**[cite: 64, 136].
+3.  [cite_start]**Payment and Display:** The price, the amount introduced, and the change (restul) are displayed on the 7-segment display, controlled via multiplexing[cite: 65, 70, 74, 171]. [cite_start]The currency used is EURO[cite: 56].
+4.  [cite_start]**Change Management:** The machine dispenses change, if available[cite: 73]. [cite_start]It starts pre-loaded with various denominations between 1 Euro and 50 Euro[cite: 58].
+5.  [cite_start]**Ticket Dispensing:** After the process is confirmed, the ticket is dispensed, signaled by a dedicated LED (**`bilet_eliberat`**)[cite: 76, 97].
+6.  [cite_start]**Cancellation:** The operation can be canceled at any time, resulting in the reimbursement of the amount introduced[cite: 60, 89].
 
-### Semnalizări de Eroare
+### Error Signals
 
-[cite_start]Sistemul semnalizează luminos (LED **`eroare`**) următoarele situații critice[cite: 249, 267]:
+[cite_start]The system uses an LED (**`eroare`**) to signal the following critical error conditions[cite: 77, 98, 99, 173]:
 
-* [cite_start]Suma introdusă este mai mică decât prețul biletului[cite: 268].
-* [cite_start]Nu există suficiente bilete disponibile[cite: 269].
-* [cite_start]Automatul nu poate restitui restul necesar (din lipsă de bancnote/monede în casierie)[cite: 270].
+* [cite_start]The amount introduced is less than the price[cite: 78].
+* [cite_start]The machine is out of tickets[cite: 79].
+* [cite_start]It is impossible to provide the correct change[cite: 80].
 
-### Componente Logice Cheie
+### Key Logical Components
 
-* [cite_start]**Convertor Binary to BCD:** Realizează conversia de la binar la BCD (Binary-Coded Decimal) pentru afișarea separată a sutelor, zecilor și unităților pe display-ul cu 7 segmente[cite: 294, 301].
-* [cite_start]**Metoda Utilizată:** **Double Dabble** (pentru conversia binar-BCD)[cite: 307].
-* [cite_start]**Afișor:** Utilizează multiplexare pentru a afișa pe rând sutele, zecile și unitățile [cite: 314, 319-321].
+* [cite_start]**Binary to BCD Converter (`convertor_binar_bcd`):** This component translates the binary value into BCD (Binary-Coded Decimal) to enable the independent display of each digit (hundreds, tens, and units) on the 7-segment display[cite: 104, 111].
+* [cite_start]**Method Used:** **Double Dabble** algorithm[cite: 117].
+* [cite_start]**Display Component (`Afisor`):** Uses the `convertor_binar_bcd` and multiplexing, synchronized with the clock, to cycle through and display the Hundreds, Tens, and Units digits [cite: 124, 127-131].
 
-## Instrucțiuni de Utilizare (Hardware Basys 3)
+## Usage Instructions (Basys 3 Hardware Mapping)
 
-[cite_start]Pentru a rula proiectul pe placa Basys 3, urmați diagrama de mai jos pentru alocarea pinilor de intrare/ieșire[cite: 354]:
+[cite_start]To run the project on the Basys 3 board, refer to the image below for the allocation of the input/output pins[cite: 164]:
 
-| Semnal | Tip | Locație pe Basys 3 | Descriere |
+| Signal | Type | Basys 3 Location | Description |
 | :--- | :--- | :--- | :--- |
-| **`distanța`** | Intrare | Switches (SW) | [cite_start]Introducerea distanței dorite (în zeci de km)[cite: 275]. |
-| **`suma_plătită`** | Intrare | Switches (SW) | [cite_start]Introducerea sumei de bani pentru plată[cite: 277]. |
-| **`btn_confirm1`** | Intrare | Buton (BTN_C) | [cite_start]Confirmă continuarea procesului (ex: confirmare preț)[cite: 257, 282]. |
-| **`cancel`** | Intrare | Switch (SW) | [cite_start]Renunțarea la tranzacție[cite: 279]. |
-| **`reset`** | Intrare | Buton (BTN_R) | [cite_start]Resetează automatul în starea inițială[cite: 280]. |
-| **Afișor** | Ieșire | Display 7 segmente | [cite_start]Afișează prețul, suma introdusă și restul[cite: 285, 354]. |
-| **`bilet_eliberat`** | Ieșire | LED (LD) | [cite_start]Se aprinde la eliberarea cu succes a biletului[cite: 287, 354]. |
-| **`eroare`** | Ieșire | LED (LD) | [cite_start]Se aprinde la orice situație de eroare[cite: 288, 354]. |
+| **`distanța`** | Input | Switches (SW) | [cite_start]Input for the desired distance (in tens of kilometers)[cite: 85]. |
+| **`suma_plătită`** | Input | Switches (SW) | [cite_start]Input for the money paid by the traveler[cite: 87]. |
+| **`btn_confirm1`** | Input | Button (BTN) | [cite_start]Confirms continuation of the process[cite: 92]. |
+| **`cancel`** | Input | Switch (SW) | [cite_start]Action to cancel the transaction[cite: 89]. |
+| **`reset`** | Input | Button (BTN) | [cite_start]Resets the machine to the initial state[cite: 90]. |
+| **Display** | Output | 7-Segment Display | [cite_start]Shows the ticket price, amount paid, and change[cite: 95]. |
+| **`bilet_eliberat`** | Output | LED (LD) | [cite_start]Lights up upon successful ticket dispensing[cite: 97]. |
+| **`eroare`** | Output | LED (LD) | [cite_start]Signals the impossibility of finalizing the transaction[cite: 98].
 
-## Posibilități de Dezvoltări Ulterioare
+## Future Development Possibilities
 
-[cite_start]Proiectul poate fi extins cu următoarele funcționalități[cite: 365, 367]:
+[cite_start]The project can be expanded with the following enhancements[cite: 176, 177]:
 
-* [cite_start]**Selectarea Clasei de Călătorie:** Adăugarea opțiunii pentru Clasa I / Clasa a II-a, cu tarife diferite per kilometru[cite: 368, 369].
-* [cite_start]**Suport pentru Mai Multe Valute:** Adaptarea sistemului pentru a accepta diferite valute (nu doar Euro)[cite: 371, 372].
-* [cite_start]**Interfață Grafică:** Conectarea la un ecran VGA pentru a simula un panou grafic mai avansat[cite: 373, 374].
+* [cite_start]**Travel Class Selection:** Introduce options for different classes (e.g., 1st class, 2nd class), each with its own per-kilometer rate[cite: 178, 179].
+* [cite_start]**Multi-Currency Support:** Adapt the system to accept payments in multiple currency types[cite: 181, 182].
+* [cite_start]**Graphical Interface:** Connect the system to a VGA screen to simulate a more advanced graphical display panel[cite: 183, 184].
