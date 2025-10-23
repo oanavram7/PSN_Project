@@ -10,11 +10,10 @@
 
 | Detail | Value | Source |
 | :--- | :--- | :--- |
-| **Student** | [cite_start]Avram Oana-Teodora [cite: 27] | |
-| **Development Board** | [cite_start]Digilent Basys 3 (Xilinx Artix-7, **xc7a35tcpg236-1**) [cite: 142, 155] | |
-| **Hardware Description Language**| [cite_start]VHDL [cite: 141] | |
-| **Software** | [cite_start]Xilinx Vivado (v2024.2) [cite: 146] | |
-| **Coordinating Professor** | [cite_start]Ella Seres [cite: 29] | |
+| **Student** | Avram Oana-Teodora | |
+| **Development Board** | Digilent Basys 3 (Xilinx Artix-7, **xc7a35tcpg236-1**) | |
+| **Hardware Description Language**| VHDL | |
+| **Software** | Xilinx Vivado (v2024.2) | |
 
 ## Key Functionalities
 
