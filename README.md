@@ -8,12 +8,12 @@
 
 ## Implementation Details
 
-| Detail | Value | Source |
-| :--- | :--- | :--- |
-| **Student** | Avram Oana-Teodora | |
-| **Development Board** | Digilent Basys 3 (Xilinx Artix-7, **xc7a35tcpg236-1**) | |
-| **Hardware Description Language**| VHDL | |
-| **Software** | Xilinx Vivado (v2024.2) | |
+| Detail | Value 
+| :--- | :--- |
+| **Student** | Avram Oana-Teodora |
+| **Development Board** | Digilent Basys 3 (Xilinx Artix-7, **xc7a35tcpg236-1**) |
+| **Hardware Description Language**| VHDL |
+| **Software** | Xilinx Vivado (v2024.2) |
 
 ## Key Functionalities
 
