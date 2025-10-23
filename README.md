@@ -2,9 +2,9 @@
 
 ## General Description
 
-[cite_start]This project implements a digital vending machine for selling train tickets, developed on a **Basys 3** FPGA development board[cite: 140]. [cite_start]The system allows the user to input the distance, calculates the price, processes the payment, and dispenses the ticket and any necessary change, while also signaling various error conditions[cite: 57, 59].
+This project implements a digital vending machine for selling train tickets, developed on a **Basys 3** FPGA development board. The system allows the user to input the distance, calculates the price, processes the payment, and dispenses the ticket and any necessary change, while also signaling various error conditions.
 
-[cite_start]The project was developed as part of the **Digital Systems Design** (Proiectarea Sistemelor Numerice - PSN) course[cite: 26].
+The project was developed as part of the **Digital Systems Design** (Proiectarea Sistemelor Numerice - PSN) course.
 
 ## Implementation Details
 
