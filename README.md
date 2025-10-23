@@ -8,7 +8,6 @@ The project was developed as part of the **Digital Systems Design** (Proiectarea
 
 ## Implementation Details
 
-| Detail | Value 
 | :--- | :--- |
 | **Student** | Avram Oana-Teodora |
 | **Development Board** | Digilent Basys 3 (Xilinx Artix-7, **xc7a35tcpg236-1**) |
@@ -17,11 +16,11 @@ The project was developed as part of the **Digital Systems Design** (Proiectarea
 
 ## Key Functionalities
 
-[cite_start]The system is designed as a Finite State Machine (FSM) clearly partitioned into a **Control Unit (UC)** and an **Execution Unit (UE)**[cite: 169], which manages the following steps:
+The system is designed as a Finite State Machine (FSM) clearly partitioned into a **Control Unit (UC)** and an **Execution Unit (UE)**, which manages the following steps:
 
-1.  [cite_start]**Distance Input:** The user inputs the desired distance (in tens of kilometers) using a set of switches[cite: 63, 69].
-2.  [cite_start]**Price Generation:** The ticket price is automatically calculated based on a fixed rate of **5 Euro per kilometer**[cite: 64, 136].
-3.  [cite_start]**Payment and Display:** The price, the amount introduced, and the change (restul) are displayed on the 7-segment display, controlled via multiplexing[cite: 65, 70, 74, 171]. [cite_start]The currency used is EURO[cite: 56].
+1.  **Distance Input:** The user inputs the desired distance (in tens of kilometers) using a set of switches.
+2.  **Price Generation:** The ticket price is automatically calculated based on a fixed rate of **5 Euro per kilometer**[cite: 64, 136].
+3.  **Payment and Display:** The price, the amount introduced, and the change (restul) are displayed on the 7-segment display, controlled via multiplexing[cite: 65, 70, 74, 171]. [cite_start]The currency used is EURO[cite: 56].
 4.  [cite_start]**Change Management:** The machine dispenses change, if available[cite: 73]. [cite_start]It starts pre-loaded with various denominations between 1 Euro and 50 Euro[cite: 58].
 5.  [cite_start]**Ticket Dispensing:** After the process is confirmed, the ticket is dispensed, signaled by a dedicated LED (**`bilet_eliberat`**)[cite: 76, 97].
 6.  [cite_start]**Cancellation:** The operation can be canceled at any time, resulting in the reimbursement of the amount introduced[cite: 60, 89].
